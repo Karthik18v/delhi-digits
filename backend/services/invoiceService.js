@@ -1,26 +1,6 @@
 const Invoice = require("../model/invoice");
 const { v4: uuidv4 } = require("uuid");
 
-const authenticateToken = (request, response, next) => {
-  let jwtToken;
-  const authHeader = request.headers["authorization"];
-  if (authHeader !== undefined) {
-    jwtToken = authHeader.split(" ")[1];
-  }
-  if (jwtToken === undefined) {
-    response.status(401);
-    response.send("Invalid JWT Token");
-  } else {
-    jwt.verify(jwtToken, "Karthik", async (error, payload) => {
-      if (error) {
-        response.status(401);
-        response.send("Invalid JWT Token");
-      } else {
-        next();
-      }
-    });
-  }
-};
 
 // Get all invoices
 const getAllInvoices = async (req, res) => {
