@@ -1,0 +1,50 @@
+h1 {
+  align-self: center;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.sub-heading {
+  align-self: center;
+}
+
+.form-container {
+  height: 60vh;
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+input {
+  border-radius: 10px;
+  border: 1px solid gray;
+  padding: 10px 20px;
+  outline: none;
+}
+
+label {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.login-button{
+  background-color: cornflowerblue;
+  color: white;
+  padding: 10px 20px;
+  border: 0px;
+  border-radius: 10px;
+  align-self: center;
+}
