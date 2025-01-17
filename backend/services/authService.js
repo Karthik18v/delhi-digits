@@ -3,21 +3,27 @@ const jwt = require("jsonwebtoken");
 const User = require("../model/user");
 
 const signup = async ({ username, email, password }) => {
+  console.log("User Model:", User);
 
+  const existingUser = await User.findOne({ email }); // await here
 
   if (existingUser) {
     throw new Error("User Already Exists");
   }
 
+  // Hash the password
   const saltRound = 10;
   const hashedPassword = await bcrypt.hash(password, saltRound);
+  console.log(hashedPassword);
 
+  // Create a new user
   const newUser = await User.create({
     username,
     password: hashedPassword,
     email,
   });
 
+  // Return the new user details (avoid sending the password)
   return {
     id: newUser._id,
     username: newUser.username,

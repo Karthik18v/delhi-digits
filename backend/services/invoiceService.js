@@ -22,6 +22,7 @@ const authenticateToken = (request, response, next) => {
   }
 };
 
+// Get all invoices
 const getAllInvoices = async (req, res) => {
   try {
     const invoices = await Invoice.find();
@@ -32,6 +33,7 @@ const getAllInvoices = async (req, res) => {
   }
 };
 
+// Add a new invoice
 const addInvoices = async (reqBody) => {
   console.log("Request Body:", reqBody);
   try {
@@ -41,10 +43,11 @@ const addInvoices = async (reqBody) => {
       return "All fields are required";
     }
 
+    // Create invoice
     const invoice = new Invoice({
       invoiceNumber: uuidv4(),
       clientName,
-      date: new Date(),
+      date: new Date(), // Ensures proper date storage
       amount,
       status,
     });
