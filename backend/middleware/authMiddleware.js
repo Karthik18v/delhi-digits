@@ -3,6 +3,7 @@ require("dotenv").config();
 
 const authMiddleware = (req, res, next) => {
   const token = req.header("Authorization");
+  console.log(token);
 
   if (!token) {
     return res
@@ -10,8 +11,10 @@ const authMiddleware = (req, res, next) => {
       .json({ success: false, error: "Access denied. No token provided." });
   }
 
+  const secreat_key = process.env.SECREAT_KEY
   try {
-    const decoded = jwt.verify(token.replace("Bearer ", ""), "Karthik");
+    const decoded = jwt.verify(token.replace("Bearer ", ""), secreat_key);
+    next();
   } catch (error) {
     return res.status(403).json({ success: false, error: "Invalid token." });
   }
