@@ -11,11 +11,9 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
-  
-
-  const onSubmitForm = async (e) => {
+  const onSubmitSignupForm = async (e) => {
     e.preventDefault();
-    
+
     try {
       const apiUrl = "https://delhi-digits-1.onrender.com/auth/signup";
       const response = await axios.post(
@@ -43,7 +41,7 @@ const SignUp = () => {
 
   return (
     <div className="Login">
-      <form className="form-container" onSubmit={onSubmitForm}>
+      <form className="form-container" onSubmit={onSubmitSignupForm}>
         <h1>Signup</h1>
         <div className="input-container">
           <label>Username</label>
@@ -74,7 +72,9 @@ const SignUp = () => {
           />
         </div>
 
-        <button className="login-button">Login</button>
+        <button className="login-button" type="submit">
+          Sign Up
+        </button>
       </form>
     </div>
   );

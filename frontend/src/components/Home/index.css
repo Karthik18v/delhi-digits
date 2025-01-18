@@ -1,0 +1,91 @@
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+.invoice-add-button-cnatiner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.invoices-table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: left;
+    margin: auto;
+}
+
+.invoices-table th,
+.invoices-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease-in-out;
+}
+
+.invoices-table thead {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.invoices-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.invoices-table tbody tr:hover {
+    background-color: #e3f2fd;
+    transform: scale(1.02);
+    /* Zoom effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Shadow on hover */
+}
+
+button{
+    background-color: #4a90e2;
+    padding: 10px 20px;
+    color: white;
+    border: 0px;
+    border-radius: 10px;
+    margin: 10px;
+}
+.page-buttons{
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    margin: auto;
+}
+
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+}
+
+select{
+    height: 40px;
+    border-radius: 10px;
+}
+.button-container{
+    align-self: center;
+}
+.cancel-button{
+    background-color: red;
+    color: white;
+}
+
+.add-button{
+    background-color: green;
+    color: white;
+}

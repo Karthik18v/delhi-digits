@@ -4,8 +4,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
   const navigate = useNavigate();
 
   const onSubmitForm = async (event) => {
@@ -15,8 +15,8 @@ const Login = () => {
       const response = await axios.post(
         apiUrl,
         {
-          email,
-          password,
+          email: loginEmail,
+          password: loginPassword,
         },
         {
           headers: {
@@ -24,10 +24,8 @@ const Login = () => {
           },
         }
       );
-      console.log(response.data.token);
       if (response.status === 200) {
-        const token = response.data.token;
-        Cookies.set("jwtToken", token, { expires: 7 });
+        Cookies.set("jwtToken", response.data.token, { expires: 7 });
         navigate("/");
       }
     } catch (error) {
@@ -46,7 +44,7 @@ const Login = () => {
             type="email"
             placeholder="Enter your email"
             required
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setLoginEmail(e.target.value)}
           />
         </div>
         <div className="input-container">
@@ -55,7 +53,7 @@ const Login = () => {
             type="password"
             placeholder="Enter your Password"
             required
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setLoginPassword(e.target.value)}
           />
         </div>
         <button className="login-button">Login</button>
