@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./index.css";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [invoices, setInvoices] = useState([]);
@@ -16,6 +17,8 @@ const Home = () => {
   const [invoiceNumber, setInvoiceNumber] = useState("");
   const [invoiceId, setInvoiceId] = useState("");
   const [editForm, setEditForm] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getInvoices();
@@ -156,11 +159,16 @@ const Home = () => {
     }
   };
 
+  const onClickLogout = () => {
+    Cookies.remove("jwtToken");
+    navigate("/login");
+  };
+
   return (
     <div className="main">
       <div className="header">
         <h1>Invoice Management</h1>
-        <button>Logout</button>
+        <button onClick={onClickLogout}>Logout</button>
       </div>
       {!isOpen && !editForm && (
         <>
@@ -283,7 +291,11 @@ const Home = () => {
             <option value="Unpaid">Unpaid</option>
           </select>
           <div className="button-container">
-            <button className="add-button" type="submit" onClick={onClickModify}>
+            <button
+              className="add-button"
+              type="submit"
+              onClick={onClickModify}
+            >
               Modify
             </button>
             <button className="cancel-button" onClick={onClickDelete}>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./index.css";
 
@@ -75,6 +75,9 @@ const SignUp = () => {
         <button className="login-button" type="submit">
           Sign Up
         </button>
+        <p className="redirect">
+          Already Exists Account <Link to="/login">Login</Link>
+        </p>
       </form>
     </div>
   );
