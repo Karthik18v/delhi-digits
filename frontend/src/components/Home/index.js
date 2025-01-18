@@ -176,45 +176,51 @@ const Home = () => {
       </div>
       {!isOpen && !editForm && (
         <>
-          <div>
-            <div className="invoice-add-button-cnatiner">
-              <h2>Invoices Overview</h2>
-              <button onClick={onClickAddInvoice}>Add Invoice</button>
-            </div>
-            {currentSlideInvoice.length > 0 && (
-              <table className="invoices-table">
-                <thead>
-                  <tr>
-                    <th>Invoice Number</th>
-                    <th>Client Name</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Amount</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentSlideInvoice.map((invoice, index) => (
-                    <tr key={index} onClick={(e) => onClickInvoice(invoice)}>
-                      <td>{invoice.invoiceNumber}</td>
-                      <td>{invoice.clientName}</td>
-                      <td>{invoice.date}</td>
-                      <td>{invoice.status}</td>
-                      <td>{invoice.amount}</td>
+          {currentSlideInvoice.length > 0 && (
+            <>
+              <div>
+                <div className="invoice-add-button-cnatiner">
+                  <h2>Invoices Overview</h2>
+                  <button onClick={onClickAddInvoice}>Add Invoice</button>
+                </div>
+
+                <table className="invoices-table">
+                  <thead>
+                    <tr>
+                      <th>Invoice Number</th>
+                      <th>Client Name</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>Amount</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </div>
-          <div className="page-buttons">
-            <button onClick={decreasePage} disabled={currPage === 1}>
-              Prev
-            </button>
-            {currPage} / {totalPage}
-            <button onClick={increasePage} disabled={currPage === totalPage}>
-              Next
-            </button>
-          </div>
+                  </thead>
+                  <tbody>
+                    {currentSlideInvoice.map((invoice, index) => (
+                      <tr key={index} onClick={(e) => onClickInvoice(invoice)}>
+                        <td>{invoice.invoiceNumber}</td>
+                        <td>{invoice.clientName}</td>
+                        <td>{invoice.date}</td>
+                        <td>{invoice.status}</td>
+                        <td>{invoice.amount}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="page-buttons">
+                <button onClick={decreasePage} disabled={currPage === 1}>
+                  Prev
+                </button>
+                {currPage} / {totalPage}
+                <button
+                  onClick={increasePage}
+                  disabled={currPage === totalPage}
+                >
+                  Next
+                </button>
+              </div>
+            </>
+          )}
         </>
       )}
       {isOpen && (
