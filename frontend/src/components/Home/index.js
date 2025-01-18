@@ -29,6 +29,10 @@ const Home = () => {
   const totalPage = Math.max(1, Math.ceil(invoices.length / 8));
 
   const getInvoices = async () => {
+    if (Cookies.get("jwtToken") === undefined) {
+      navigate("/login");
+    }
+
     try {
       const apiUrl = "https://delhi-digits-1.onrender.com/invoices";
       const jwtToken = Cookies.get("jwtToken");

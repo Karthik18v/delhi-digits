@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
-import "./index.css"
+import "./index.css";
 
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
@@ -25,6 +25,7 @@ const Login = () => {
           },
         }
       );
+      console.log(response);
       if (response.status === 200) {
         Cookies.set("jwtToken", response.data.token, { expires: 7 });
         navigate("/");
@@ -59,7 +60,7 @@ const Login = () => {
         </div>
         <button className="login-button">Login</button>
         <p className="redirect">
-          Create User Credentialss   <Link to="/signup">Signup</Link>
+          Create User Credentialss <Link to="/signup">Signup</Link>
         </p>
       </form>
     </div>
